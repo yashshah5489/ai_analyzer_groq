@@ -11,11 +11,11 @@ class GroqLLM(LLM):
     LangChain wrapper for the Groq API.
     """
     
-    model_name: str = "llama3.3-70b"
+    model_name: str = "llama-3.3-70b-versatile"
     temperature: float = 0.7
     max_tokens: int = 1024
     
-    def __init__(self, model_name: str = "llama3.3-70b", temperature: float = 0.7, max_tokens: int = 1024):
+    def __init__(self, model_name: str = "llama-3.3-70b-versatile", temperature: float = 0.7, max_tokens: int = 1024):
         """
         Initialize the GroqLLM.
         

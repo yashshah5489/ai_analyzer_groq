@@ -17,7 +17,12 @@ def create_generic_advice_chain(temperature=0.7, max_tokens=1024):
     Returns:
         LLMChain: The configured chain
     """
-    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+    # Specify input_key so that the memory tracks only the 'user_input'
+    memory = ConversationBufferMemory(
+        memory_key="chat_history", 
+        input_key="user_input", 
+        return_messages=True
+    )
     prompt_template = """
     You are a financial advisor specializing in general advice.
     Using the context below (including latest news and insights from key finance books),
