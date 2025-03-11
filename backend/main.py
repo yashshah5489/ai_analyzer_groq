@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import logging
 from datetime import datetime
 import os
+import uvicorn
 
 # Import your existing functionality.
 from backend.agent_manager import get_agent_advice
@@ -23,6 +24,9 @@ logging.basicConfig(
         logging.StreamHandler()
     ],
 )
+
+# Create logger
+logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Multi-Agent Financial Analyzer API")
 
@@ -123,5 +127,4 @@ def analyze_advice(request: AdviceRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
-    import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
